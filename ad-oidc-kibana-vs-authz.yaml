@@ -1,0 +1,30 @@
+apiVersion: k8s.nginx.org/v1
+kind: VirtualServer
+metadata:
+  name: kibana-vs
+spec:
+  http-snippets: |
+    auth_jwt_claim_set $jwt_groups groups;
+    map $jwt_groups $isSpTestGroup {
+      "ffdb3bb1-30de-47af-a240-c8d8dd126239" 1; # SPTestGroupID
+      default                                0;
+    }
+  host: kibana.example.com
+  tls:
+    secret: kibana-nic-secret
+    redirect:
+      enable: true
+  upstreams:
+  - name: kibana
+    service: quickstart-kb-http
+    port: 5601
+    tls:
+      enable: true
+  routes:
+  - path: /
+    location-snippets: |
+      auth_jwt_require $isSpTestGroup error=403;
+    policies:
+    - name: ad-oidc-policy
+    action:
+      pass: kibana
