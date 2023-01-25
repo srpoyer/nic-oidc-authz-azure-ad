@@ -12,13 +12,13 @@ B. Configure NIC as Relaying Party
 6. Create VS
 7. 
 
-1. Launch K8s Cluster
+### 1. Launch K8s Cluster
 
 This guide uses AKS, the managed Azure Kubernetes environment.  
 
-2. Deploy NGINX+ Ingress Controller (NIC)
+### 2. Deploy NGINX+ Ingress Controller (NIC)
 
-3. Deploy Protected App
+### 3. Deploy Protected App
 
 This is the application that sits behind NGINX+ and that will only be accessible after the user authenticates with Azure AD using OIDC.  We will use a simple app from the NGINX Inc GitHub repo:  <https://github.com/nginxinc/kubernetes-ingress/blob/main/examples/custom-resources/oidc/webapp.yaml>
 
@@ -36,11 +36,11 @@ This is the application that sits behind NGINX+ and that will only be accessible
 
 
 
-## Enable Authorization
+### Enable Authorization
 
 Reference:  Conditional Access Control with Microsoft Azure Active Directory <https://www.nginx.com/blog/conditional-access-control-with-microsoft-azure-active-directory/>
 
-## Edit the App Reg Manifest to Ensure Group Membership in JWT
+### Edit the App Reg Manifest to Ensure Group Membership in JWT
 
 Reference: RBAC <https://www.nginx.com/blog/conditional-access-control-with-microsoft-azure-active-directory/#Role-Based-Access-Control>
 
