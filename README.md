@@ -18,9 +18,14 @@ This guide uses AKS, the managed Azure Kubernetes environment.
 
 ### 2. Deploy NGINX+ Ingress Controller (NIC)
 
+Reference for installing with manifests:  <https://docs.nginx.com/nginx-ingress-controller/installation/installation-with-manifests/>
+
+This guide uses a Deployment for the NGINX Ingress Controller.  A Deployment makes troubleshooting easier since you only have one pod log to look at.  Later, scale up the Deployment to two or mode pods to ensure cluster syncing between the deployment pods is working.  
+
+Note the command line options (args) in the [deployment manifest](Manifests/nginx-plus-ingress.yaml) that are required for this use case.  
 ### 3. Deploy Protected App
 
-This is the application that sits behind NGINX+ and that will only be accessible after the user authenticates with Azure AD using OIDC.  We will use a simple app from the NGINX Inc GitHub repo:  <https://github.com/nginxinc/kubernetes-ingress/blob/main/examples/custom-resources/oidc/webapp.yaml>
+This is the application that sits behind NGINX+ and that will only be accessible after the user authenticates with Azure AD using OIDC.  We will use a simple app from the NGINX Inc GitHub repo:  <https://github.com/nginxinc/kubernetes-ingress/blob/main/examples/custom-resources/oidc/webapp.yaml>.  This file has also been copied to the Manifests folder for convience.  
 
 - Guide to installing Elasticsearch/Kibana in K8s: <https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-deploy-eck.html>
 

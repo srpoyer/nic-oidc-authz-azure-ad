@@ -1,17 +1,17 @@
 apiVersion: k8s.nginx.org/v1
 kind: VirtualServer
 metadata:
-  name: kibana-vs
+  name: webapp-vs
 spec:
-  host: kibana.example.com
+  host: webapp.example.com
   tls:
     secret: kibana-nic-secret
     redirect:
       enable: true
   upstreams:
-  - name: kibana
-    service: quickstart-kb-http
-    port: 5601
+  - name: webapp
+    service: webapp-svc
+    port: 80
     tls:
       enable: true
   routes:
@@ -19,4 +19,4 @@ spec:
     policies:
     - name: ad-oidc-policy
     action:
-      pass: kibana
+      pass: webapp
