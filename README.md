@@ -1,3 +1,4 @@
+# <Draft>
 # AuthN & AuthZ Using NIC with JWT's and Azure AD
 
 This guide is intended to configure the NGINX Inc. Ingress Controller (NIC) to act as the Relaying Party in an OIDC flow to authenticate a user with their credentials in Azure AD.  In addition, the guide also configures the NIC to authorize the user's access based on their AD group membership.  
